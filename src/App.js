@@ -6,13 +6,14 @@ import Character from './components/Character';
 import styled from 'styled-components';
 
 
-
+// styled components
 const StyledContainer = styled.div`
 display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: space-evenly;
 `;
+
 
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
@@ -33,7 +34,6 @@ const App = () => {
     .catch(err => console.log(err))
   },[])
 
-
   return (
     <div className="App">
       <h1 className="Header">Characters</h1>
@@ -43,7 +43,6 @@ const App = () => {
             return <Character key={idx} id={idx + 1} character={character} />
           })
         }
-
       </StyledContainer>
     </div>
   );

@@ -1,9 +1,8 @@
-// Write your Character component here
-
 import React from 'react'
 import styled from 'styled-components'
 import Details from './Details'
 
+// styled components
 const StyledCharContainer = styled.div`
     display: flex;
     flex-direction: column;
@@ -22,11 +21,8 @@ const StyledCharContainer = styled.div`
 `;
 
 
-
 export default function Character(props) {
     const { character, id } = props;
-
-
 
     return(
         <StyledCharContainer>

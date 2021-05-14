@@ -3,6 +3,7 @@ import styled from 'styled-components'
 // import { useEffect, useState } from 'react';
 // import axios from 'axios'
 
+// styled components
 const StyledDetails = styled.section`
     display: flex;
     justify-content: space-around;
@@ -18,6 +19,7 @@ const StyledDetails = styled.section`
         width: 100%;
     }
 `;
+
 
 export default function Details(props) {
     const { character, id } = props;
