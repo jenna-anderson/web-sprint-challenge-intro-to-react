@@ -24,14 +24,14 @@ const StyledCharContainer = styled.div`
 
 
 export default function Character(props) {
-    const { character } = props;
+    const { character, id } = props;
 
 
 
     return(
         <StyledCharContainer>
             <h2>{character.name}</h2>
-            <Details character={character}/>
+            <Details character={character} id={id}/>
         </StyledCharContainer>
     )
 }

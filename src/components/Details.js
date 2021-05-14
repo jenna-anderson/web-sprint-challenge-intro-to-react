@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+// import { useEffect, useState } from 'react';
+// import axios from 'axios'
 
 const StyledDetails = styled.section`
     display: flex;
@@ -18,9 +20,20 @@ const StyledDetails = styled.section`
 `;
 
 export default function Details(props) {
-    const { character } = props;
+    const { character, id } = props;
 
-    // console.log(details)
+    // const [films, setFilms] = useState();
+
+    // useEffect(() => {
+    //     axios
+    //     .get('https://swapi.dev/api/films')
+    //     .then(res => {
+    //       setFilms(res.data.results)
+    //       })
+    //     .catch(err => console.log(err))
+    //   },[])
+
+    // console.log(films)
 
     return(
         <StyledDetails>
@@ -37,6 +50,17 @@ export default function Details(props) {
                 <p>{character.hair_color}</p>
                 <p>{character.eye_color}</p>
                 <p>{character.birth_year}</p>
+
+                {/* {!films ? 
+                    <p>Loading...</p>     
+                    
+                    : {films.map(film => {
+                        film.characters.map(character => {
+                            character.includes(`http://swapi.dev/api/people/${id}`) ? <p>film.title</p> : <p>test</p>
+                        })
+                    })}
+                 } */} {/* This became quite the mess, couldn't quite get it to work. There must be a better way */}
+
             </div>
         </StyledDetails>
     )

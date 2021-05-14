@@ -8,7 +8,6 @@ import styled from 'styled-components';
 
 
 const StyledContainer = styled.div`
-/* height: calc(100vh - 100px); */
 display: flex;
 flex-direction: column;
 align-items: center;
@@ -34,14 +33,6 @@ const App = () => {
     .catch(err => console.log(err))
   },[])
 
-  useEffect(() => {
-    axios
-    .get('https://swapi.dev/api/films')
-    .then(res => {
-      console.log(res.data)
-      })
-    .catch(err => console.log(err))
-  },[])
 
   return (
     <div className="App">
@@ -49,7 +40,7 @@ const App = () => {
       <StyledContainer>
         {
           characters.map((character, idx) => {
-            return <Character key={idx} character={character} />
+            return <Character key={idx} id={idx + 1} character={character} />
           })
         }
 
