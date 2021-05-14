@@ -19,6 +19,7 @@ const App = () => {
   // the state properties here.
 
   const [characters, setCharacters] = useState([]);
+  const [isActive, setIsActive] = useState(false);
 
   // Fetch characters from the API in an effect hook. Remember, anytime you have a 
   // side effect in a component, you want to think about which state and/or props it should
@@ -31,13 +32,17 @@ const App = () => {
     .catch(err => console.log(err))
   },[])
 
+  const dropdown = () => {
+    setIsActive(!isActive);
+  }
+
   return (
     <div className="App">
       <h1 className="Header">Characters</h1>
       <StyledContainer>
         {
           characters.map((character, idx) => {
-            return <Character key={idx} character={ character }/>  // not ideal to choose index as the key but I wasn't sure what else to set it too since each character didn't already have an id associated with them
+            return <Character key={idx} character={character} dropdown={dropdown} setIsActive={setIsActive} isActive={isActive}/>  // not ideal to choose index as the key but I wasn't sure what else to set it too since each character didn't already have an id associated with them
           })
         }
       </StyledContainer>
