@@ -2,7 +2,17 @@ import React from 'react';
 import './App.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import Character from './components/Character'
+import Character from './components/Character';
+import styled from 'styled-components';
+
+
+const StyledContainer = styled.div`
+height: calc(100vh - 100px);
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-evenly;
+`;
 
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
@@ -21,15 +31,16 @@ const App = () => {
     .catch(err => console.log(err))
   },[])
 
-
   return (
     <div className="App">
       <h1 className="Header">Characters</h1>
-      {
-        characters.map(character => {
-          return <Character character={ character }/> 
-        })
-      }
+      <StyledContainer>
+        {
+          characters.map((character, idx) => {
+            return <Character key={idx} character={ character }/>  // not ideal to choose index as the key but I wasn't sure what else to set it too since each character didn't already have an id associated with them
+          })
+        }
+      </StyledContainer>
     </div>
   );
 }
