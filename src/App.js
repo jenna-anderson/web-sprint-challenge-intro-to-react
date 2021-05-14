@@ -6,8 +6,9 @@ import Character from './components/Character';
 import styled from 'styled-components';
 
 
+
 const StyledContainer = styled.div`
-height: calc(100vh - 100px);
+/* height: calc(100vh - 100px); */
 display: flex;
 flex-direction: column;
 align-items: center;
@@ -19,7 +20,6 @@ const App = () => {
   // the state properties here.
 
   const [characters, setCharacters] = useState([]);
-  const [isActive, setIsActive] = useState(false);
 
   // Fetch characters from the API in an effect hook. Remember, anytime you have a 
   // side effect in a component, you want to think about which state and/or props it should
@@ -28,13 +28,20 @@ const App = () => {
   useEffect(() => {
     axios
     .get('https://swapi.dev/api/people')
-    .then(res => setCharacters(res.data))
+    .then(res => {
+      console.log(res.data.films)
+      setCharacters(res.data)})
     .catch(err => console.log(err))
   },[])
 
-  const dropdown = () => {
-    setIsActive(!isActive);
-  }
+  useEffect(() => {
+    axios
+    .get('https://swapi.dev/api/films')
+    .then(res => {
+      console.log(res.data)
+      })
+    .catch(err => console.log(err))
+  },[])
 
   return (
     <div className="App">
@@ -42,9 +49,10 @@ const App = () => {
       <StyledContainer>
         {
           characters.map((character, idx) => {
-            return <Character key={idx} character={character} dropdown={dropdown} setIsActive={setIsActive} isActive={isActive}/>  // not ideal to choose index as the key but I wasn't sure what else to set it too since each character didn't already have an id associated with them
+            return <Character key={idx} character={character} />
           })
         }
+
       </StyledContainer>
     </div>
   );
